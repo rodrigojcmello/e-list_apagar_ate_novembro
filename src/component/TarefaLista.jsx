@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import Tarefa from '../controller/Tarefa';
+
 class TarefaLista extends Component {
     constructor(props) {
         super(props);
@@ -11,7 +13,15 @@ class TarefaLista extends Component {
             >
                 { this.props.lista.map((tarefa, i) => {
                     return (
-                        <div key={ i }>
+                        <div
+                            key={ i }
+                            style={ tarefa.concluida ? { opacity: 0.3 } : {} }
+                        >
+                            <input
+                                type='checkbox'
+                                checked={ tarefa.concluida ? 'checked' : '' }
+                                onChange={ Tarefa.concluir.bind(Tarefa, i, this.props.atualizarLista) }
+                            />
                             { tarefa.titulo }
                         </div>
                     );

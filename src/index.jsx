@@ -6,6 +6,7 @@ import Tarefa from './controller/Tarefa';
 
 import TarefaLista from './component/TarefaLista';
 import TarefaEntrada from './component/TarefaEntrada';
+import TarefaArquivar from './component/TarefaArquivar';
 
 if (process.env.NODE_ENV == 'production') {
     console.log = () => {};
@@ -26,11 +27,14 @@ class App extends Component {
     render() {
         return (
             <div>
+                <TarefaArquivar
+                    atualizarLista={ this.atualizarLista.bind(this) }
+                />
                 <TarefaLista
                     lista={ this.state.lista }
+                    atualizarLista={ this.atualizarLista.bind(this) }
                 />
                 <TarefaEntrada
-                    adicionarTarefa={ Tarefa.adicionar }
                     atualizarLista={ this.atualizarLista.bind(this) }
                 />
             </div>

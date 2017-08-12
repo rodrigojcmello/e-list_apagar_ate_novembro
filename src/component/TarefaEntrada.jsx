@@ -8,12 +8,15 @@ class ListaTarefa extends Component {
     }
     enviarTarefa(event) {
         event.preventDefault();
-        Tarefa.adicionar(
-            { titulo: this.entrada.value },
-            this.props.atualizarLista
-        );
-        this.entrada.value = '';
-        this.entrada.blur();
+
+        if (this.entrada.value) {
+            Tarefa.adicionar(
+                { titulo: this.entrada.value },
+                this.props.atualizarLista
+            );
+            this.entrada.value = '';
+            // this.entrada.blur();            
+        }
     }
     render() {
         return (
