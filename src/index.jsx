@@ -1,45 +1,54 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import store from 'store';
+import { HashRouter as Router, Route, Switch, Link, Redirect } from 'react-router-dom';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
-import Tarefa from './controller/Tarefa';
+import RotaRedirecionar from './component/RotaRedirecionar';
+import Entrar from './component/Entrar';
 
-import TarefaLista from './component/TarefaLista';
-import TarefaEntrada from './component/TarefaEntrada';
-import TarefaArquivar from './component/TarefaArquivar';
+const TransitionRoute = ({ location, props }) => (
+    <TransitionGroup>
+        <CSSTransition
+            classNames='fade'
+            key={ location.pathname.split('/')[1] }
+            mountOnEnter={ true }
+            timeout={ 400 }
+            unmountOnExit={ true }
+        >
+            <div className='WRAPPER'>
+                <Switch location={ location } >
+                    <Route exact path='/' render={ () => (
+                        <Redirect to='/pt-BR/Entrar' />
+                    )} />
+                    <Route path='/pt-BR/Entrar' component={ Entrar } />
 
-if (process.env.NODE_ENV == 'production') {
-    console.log = () => {};
-}
-
-class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            lista: Tarefa.lista
-        };
-    }
-    atualizarLista(lista) {
-        this.setState({
-            lista: lista
-        });
-    }
-    render() {
-        return (
-            <div>
-                <TarefaArquivar
-                    atualizarLista={ this.atualizarLista.bind(this) }
-                />
-                <TarefaLista
-                    lista={ this.state.lista }
-                    atualizarLista={ this.atualizarLista.bind(this) }
-                />
-                <TarefaEntrada
-                    atualizarLista={ this.atualizarLista.bind(this) }
-                />
+                    {/* <Route path='/home' component={ Home } />
+                    <AuthRoute path='/topics' component={ Topics } />
+                    <AuthRoute path='/auth' component={ Auth } /> */}
+                    <Route component={ RotaRedirecionar }/>
+                </Switch>
             </div>
-        );
-    }
-}
+        </CSSTransition>
+    </TransitionGroup>
+);
 
-render(<App />, document.getElementById('app'));
+const AuthRoute = ({ component, ...props }) => (
+    <div>
+        {
+            !true ?
+            <Route { ...props } component={ component } /> :
+            <Route { ...props } component={ RotaRedirecionar } />
+        }
+    </div>
+);
+
+const App = () => (
+    <Router>
+        <div>
+            <Route component={ TransitionRoute } />
+        </div>
+    </Router>
+);
+
+
+render(<App/>, document.getElementById('app'));
