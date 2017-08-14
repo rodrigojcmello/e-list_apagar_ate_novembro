@@ -7,7 +7,7 @@ class Entrar extends Component {
     render() {
         return (
             <div>
-                Entrar2
+                Entrar2!!!
             </div>
         );
     }
