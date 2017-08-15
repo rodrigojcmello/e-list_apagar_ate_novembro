@@ -8,13 +8,14 @@ class Entrar extends Component {
 		alert('teste');
 	}
 	componentWil() {
-		document;
+		if (foo) {
+			bar();
+		}
 	}
 	render() {
 		return (
 			<div>
 				<button onClick={Usuario.autenticar()}>Entrar</button>
-				<div />
 			</div>
 		);
 	}

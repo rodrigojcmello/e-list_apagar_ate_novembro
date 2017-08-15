@@ -1,13 +1,14 @@
 {
-    "parserOptions": {
-        "ecmaVersion": 6,
-        "sourceType": "module",
-        "ecmaFeatures": {
-            "jsx": true,
-            "experimentalObjectRestSpread": true
-        }
-    },
-    "rules": {
-        "semi": [2, "always", { "omitLastInOneLineBlock": true }]
-    }
+	"parserOptions": {
+		"ecmaVersion": 6,
+		"sourceType": "module",
+		"ecmaFeatures": {
+			"jsx": true,
+			"experimentalObjectRestSpread": true
+		}
+	},
+	"rules": {
+		"semi": [2, "always", { "omitLastInOneLineBlock": true }],
+		"quotes": [1, "single"]
+	}
 }
