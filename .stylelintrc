@@ -1,0 +1,7 @@
+{
+	"rules": {
+		"indentation": 4,
+		"unit-no-unknown": true,
+		"property-no-unknown": true,
+	}
+}
