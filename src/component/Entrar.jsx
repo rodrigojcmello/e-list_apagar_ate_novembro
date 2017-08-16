@@ -1,21 +1,25 @@
 import React, { Component } from 'react';
+import Usuario from '../controller/Usuario';
+const history = require('history').createHashHistory();
 
 class Entrar extends Component {
 	constructor(props) {
 		super(props);
 	}
-	Salvar() {
-		alert('teste');
-	}
-	componentWil() {
-		if (foo) {
-			bar();
-		}
+	autenticarUsuario() {
+		Usuario.autenticar((retorno) => {
+			if (retorno.sucesso) {
+				history.push('/pt-BR/Rodrigo-Mello');
+			}
+		});
 	}
 	render() {
 		return (
 			<div>
-				<button onClick={Usuario.autenticar()}>Entrar</button>
+				<button
+					onClick={ this.autenticarUsuario.bind(this) } >
+					Entrar
+				</button>
 			</div>
 		);
 	}

@@ -8,7 +8,7 @@
 		}
 	},
 	"rules": {
-		"semi": [2, "always", { "omitLastInOneLineBlock": true }],
+		"semi": [1, "always", { "omitLastInOneLineBlock": true }],
 		"quotes": [1, "single"]
 	}
 }
