@@ -8,6 +8,9 @@ class Usuario {
 		store.set('token', '12345');
 		callback({ sucesso: true });
 	}
+	sair() {
+		localStorage.clear();
+	}
 }
 
 export default new Usuario();

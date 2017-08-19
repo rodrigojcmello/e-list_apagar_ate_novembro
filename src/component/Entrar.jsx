@@ -9,15 +9,14 @@ class Entrar extends Component {
 	autenticarUsuario() {
 		Usuario.autenticar((retorno) => {
 			if (retorno.sucesso) {
-				history.push('/pt-BR/Rodrigo-Mello');
+				history.push('/Autenticado');
 			}
 		});
 	}
 	render() {
 		return (
 			<div>
-				<button
-					onClick={ this.autenticarUsuario.bind(this) } >
+				<button onClick={ this.autenticarUsuario.bind(this) } >
 					Entrar
 				</button>
 			</div>

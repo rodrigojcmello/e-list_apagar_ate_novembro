@@ -16,9 +16,12 @@ const config = {
             test: /\.jsx?$/,
             loader: 'babel-loader',
             options: {
-                presets: ['stage-3', 'es2015', 'react']
+                presets: ['stage-3', 'es2015', 'react'],
+                cacheDirectory: true,
+                sourceMaps: true
             },
-            include: __dirname + '/src'
+            include: __dirname + '/src',
+            exclude: /node_modules/
         }
     ] },
     plugins: [

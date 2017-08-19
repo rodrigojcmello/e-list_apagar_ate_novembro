@@ -18,7 +18,7 @@ class Categoria extends Component {
             <div>
                 { this.state.categoria.map((item, i) => {
                     return (
-                        <div>
+                        <div key={ i }>
                             { item.titulo }
                         </div>
                     );

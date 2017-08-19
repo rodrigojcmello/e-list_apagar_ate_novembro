@@ -1,53 +1,45 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import { HashRouter, Route, Switch, Link, Redirect } from 'react-router-dom';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { HashRouter, Switch, Route, Redirect } from 'react-router-dom';
+
+import Usuario from './controller/Usuario';
 
 import RotaRedirecionar from './component/RotaRedirecionar';
 import Entrar from './component/Entrar';
-import Categoria from './component/Categoria';
+import Autenticado from './component/Autenticado';
+import Categoria from './component/Autenticado/Categoria';
 
-const TransitionRoute = ({ location, props }) => (
-	<TransitionGroup>
-		<CSSTransition
-			classNames='fade'
-			key={ location.pathname.split('/')[1] }
-			mountOnEnter={ true }
-			timeout={ 400 }
-			unmountOnExit={ true }
-		>
-			<div className='WRAPPER'>
-				<Switch location={ location }>
-					<Route
-						exact
-						path='/'
-						render={ () => <Redirect to='/pt-BR/Entrar' /> }
-					/>
-					<Route component={ Entrar } path='/pt-BR/Entrar' />
-					<Route component={ Categoria } path='/pt-BR/:nome/categoria' />
+class App extends Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+		console.log('### App props');
+		console.log(this.props);
+        return (
+			<HashRouter>
+				<Switch>
+					<Route path='/' render={ () => (
+						Usuario.token ?
+						<Redirect to='/Autenticado' /> :
+						<Redirect to='/Entrar' />
+					) } />
+					<Route path='/Entrar' render={ () => (
+						Usuario.token ?
+						<Redirect to='/Autenticado' /> :
+						<Entrar />
+					) } />
+					<Route path='/Autenticado' render={ () => (
+						Usuario.token ?
+						<Autenticado { ...this.props } /> :
+						<Redirect to='/' />
+					) } />
+                    {/* <Route path='/Autenticado' component={ Autenticado } /> */}
 					<Route component={ RotaRedirecionar } />
 				</Switch>
-			</div>
-		</CSSTransition>
-	</TransitionGroup>
-);
-
-const AuthRoute = ({ component, ...props }) => (
-	<div>
-		{
-			!true ?
-			<Route { ...props } component={ component } /> :
-			<Route { ...props } component={ RotaRedirecionar } />
-		}
-	</div>
-);
-
-const App = () => (
-	<HashRouter>
-		<div>
-			<Route component={ TransitionRoute } />
-		</div>
-	</HashRouter>
-);
+			</HashRouter>
+        );
+    }
+}
 
 render(<App />, document.getElementById('app'));
