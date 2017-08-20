@@ -8,7 +8,6 @@ import Usuario from './controller/Usuario';
 import RotaRedirecionar from './component/RotaRedirecionar';
 import Entrar from './component/Entrar';
 import Autenticado from './component/Autenticado';
-import Categoria from './component/Autenticado/Categoria';
 
 class App extends Component {
     constructor(props) {

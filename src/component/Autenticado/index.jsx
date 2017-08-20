@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Redirect, withRouter } from 'react-router-dom';
-import Categoria from './Categoria';
+import CategoriaLista from './CategoriaLista';
 
 class Autenticado extends Component {
     constructor(props) {
@@ -17,7 +17,7 @@ class Autenticado extends Component {
                 <Route
                     path={ this.props.match.url + '/Categoria' }
                     render={ () => (
-                        <Categoria
+                        <CategoriaLista
                             atualizarToken={ this.props.atualizarToken }
                         />
                     ) }

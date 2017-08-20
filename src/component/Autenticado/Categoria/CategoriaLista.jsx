@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
+
+import Categoria from '../../controller/Categoria';
 import Usuario from '../../controller/Usuario';
 
-class Categoria extends Component {
+class CategoriaLista extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            categoria: [
-                { titulo: 'Teste 1' },
-                { titulo: 'Teste 1' },
-                { titulo: 'Teste 1' },
-                { titulo: 'Teste 1' },
-                { titulo: 'Teste 1' }
-            ]
+            lista: Categoria.lista
         };
     }
     encerrarSessao() {
@@ -21,22 +17,30 @@ class Categoria extends Component {
 			}
 		});
     }
+    atualizarLista(lista) {
+        this.setState({ lista: lista });
+    }
     render() {
         return (
             <div>
                 <button onClick={ this.encerrarSessao.bind(this) }>
                     Sair
                 </button>
-                { this.state.categoria.map((item, i) => {
+                { this.state.lista.map((categoria, i) => {
                     return (
                         <div key={ i }>
-                            { item.titulo }
+                            { categoria.titulo }
                         </div>
                     );
                 }) }
+                <button
+                    onClick={ this.adicionarCategoria.bind(this, atualizarLista) }
+                >
+                    + Categoria
+                </button>
             </div>
         );
     }
 }
 
-export default Categoria;
+export default CategoriaLista;
