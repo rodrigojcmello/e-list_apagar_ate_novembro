@@ -9,8 +9,10 @@ class Usuario {
 		this.token = '12345';
 		callback({ sucesso: true });
 	}
-	sair() {
+	sair(callback) {
 		localStorage.clear();
+		this.token = '';
+		callback({ sucesso: true });
 	}
 }
 

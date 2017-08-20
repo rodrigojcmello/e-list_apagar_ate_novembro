@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Usuario from '../../controller/Usuario';
 
 class Categoria extends Component {
     constructor(props) {
@@ -13,9 +14,19 @@ class Categoria extends Component {
             ]
         };
     }
+    encerrarSessao() {
+        Usuario.sair((retorno) => {
+			if (retorno.sucesso) {
+				this.props.atualizarToken(Usuario.token);
+			}
+		});
+    }
     render() {
         return (
             <div>
+                <button onClick={ this.encerrarSessao.bind(this) }>
+                    Sair
+                </button>
                 { this.state.categoria.map((item, i) => {
                     return (
                         <div key={ i }>

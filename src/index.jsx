@@ -42,7 +42,9 @@ class App extends Component {
 					) } />
 					<Route path='/Autenticado' render={ () => (
 						this.state.usuario.token ?
-						<Autenticado /> :
+						<Autenticado
+                            atualizarToken={ this.atualizarToken.bind(this) }
+                        /> :
 
 // TODO: Remover propriedade key para criar uma nova instância do Redirect para impedir que uma o retorno seja uma página branca
 // https://github.com/ReactTraining/react-router/issues/5003

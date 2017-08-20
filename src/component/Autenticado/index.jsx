@@ -11,12 +11,16 @@ class Autenticado extends Component {
         console.log(this.props);
         return (
             <div>
-                <Route exact path={ this.props.match.url } render={ () => (
+                <Route path={ this.props.match.url } render={ () => (
                     <Redirect to={ this.props.match.url + '/Categoria' } />
                 ) } />
                 <Route
                     path={ this.props.match.url + '/Categoria' }
-                    component={ Categoria }
+                    render={ () => (
+                        <Categoria
+                            atualizarToken={ this.props.atualizarToken }
+                        />
+                    ) }
                 />
             </div>
         );
