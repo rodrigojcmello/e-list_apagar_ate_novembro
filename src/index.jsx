@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import { HashRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { HashRouter, Switch, Route, Redirect, withRouter } from 'react-router-dom';
+import update from 'immutability-helper';
 
 import Usuario from './controller/Usuario';
 
@@ -12,29 +13,43 @@ import Categoria from './component/Autenticado/Categoria';
 class App extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            usuario: {
+                token: Usuario.token
+            }
+        };
+    }
+    atualizarToken(token) {
+        this.setState({
+            usuario: update(this.state.usuario, { 'token': { $set: token } })
+        });
     }
     render() {
-		console.log('### App props');
-		console.log(this.props);
         return (
 			<HashRouter>
 				<Switch>
-					<Route path='/' render={ () => (
-						Usuario.token ?
+					<Route exact path='/' render={ () => (
+						this.state.usuario.token ?
 						<Redirect to='/Autenticado' /> :
 						<Redirect to='/Entrar' />
 					) } />
 					<Route path='/Entrar' render={ () => (
-						Usuario.token ?
+						this.state.usuario.token ?
 						<Redirect to='/Autenticado' /> :
-						<Entrar />
+						<Entrar
+                            atualizarToken={ this.atualizarToken.bind(this) }
+                        />
 					) } />
 					<Route path='/Autenticado' render={ () => (
-						Usuario.token ?
-						<Autenticado { ...this.props } /> :
-						<Redirect to='/' />
+						this.state.usuario.token ?
+						<Autenticado /> :
+
+// TODO: Remover propriedade key para criar uma nova instância do Redirect para impedir que uma o retorno seja uma página branca
+// https://github.com/ReactTraining/react-router/issues/5003
+// https://github.com/ReactTraining/react-router/pull/5162
+
+						<Redirect to='/' key='BUCETA' />
 					) } />
-                    {/* <Route path='/Autenticado' component={ Autenticado } /> */}
 					<Route component={ RotaRedirecionar } />
 				</Switch>
 			</HashRouter>

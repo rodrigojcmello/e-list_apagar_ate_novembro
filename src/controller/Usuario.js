@@ -6,6 +6,7 @@ class Usuario {
 	}
 	autenticar(callback) {
 		store.set('token', '12345');
+		this.token = '12345';
 		callback({ sucesso: true });
 	}
 	sair() {

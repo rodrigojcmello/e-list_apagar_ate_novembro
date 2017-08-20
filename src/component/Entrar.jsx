@@ -9,7 +9,8 @@ class Entrar extends Component {
 	autenticarUsuario() {
 		Usuario.autenticar((retorno) => {
 			if (retorno.sucesso) {
-				history.push('/Autenticado');
+				this.props.atualizarToken(Usuario.token);
+				// history.push('/Autenticado');
 			}
 		});
 	}
