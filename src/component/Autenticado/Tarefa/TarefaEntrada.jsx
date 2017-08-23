@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Tarefa from '../controller/Tarefa';
 
-class ListaTarefa extends Component {
+class Entrada extends Component {
     constructor(props) {
         super(props);
     }
@@ -15,7 +15,7 @@ class ListaTarefa extends Component {
                 this.props.atualizarLista
             );
             this.entrada.value = '';
-            // this.entrada.blur();            
+            // this.entrada.blur();
         }
     }
     render() {
@@ -37,4 +37,4 @@ class ListaTarefa extends Component {
     }
 }
 
-export default ListaTarefa;
+export default Entrada;
