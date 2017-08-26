@@ -11,9 +11,7 @@ class Index extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            lista: Tarefa.lista,
-            name: 'Eric',
-            unreadCount: 2
+            lista: Tarefa.lista
         };
     }
     atualizarLista(lista) {
@@ -22,7 +20,6 @@ class Index extends Component {
         });
     }
     render() {
-        const { name, unreadCount } = this.state;
         return (
             <div>
                 <hr />
