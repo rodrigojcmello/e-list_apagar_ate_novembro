@@ -3,11 +3,11 @@ import { render } from 'react-dom';
 import { IntlProvider, FormattedMessage } from 'react-intl';
 import store from 'store';
 
-import Tarefa from './controller/Tarefa';
+import Tarefa from '../../../controller/Tarefa';
 
-import TarefaLista from './component/TarefaLista';
-import TarefaEntrada from './component/TarefaEntrada';
-import TarefaArquivar from './component/TarefaArquivar';
+import TarefaLista from './TarefaLista';
+import TarefaEntrada from './TarefaEntrada';
+import TarefaArquivar from './TarefaArquivar';
 
 if (process.env.NODE_ENV == 'production') {
     console.log = () => {};

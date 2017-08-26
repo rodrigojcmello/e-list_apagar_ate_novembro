@@ -44,11 +44,6 @@ class App extends Component {
 						<Autenticado
                             atualizarToken={ this.atualizarToken.bind(this) }
                         /> :
-
-// TODO: Remover propriedade key para criar uma nova instância do Redirect para impedir que uma o retorno seja uma página branca
-// https://github.com/ReactTraining/react-router/issues/5003
-// https://github.com/ReactTraining/react-router/pull/5162
-
 						<Redirect to='/' key='BUCETA' />
 					) } />
 					<Route component={ RotaRedirecionar } />

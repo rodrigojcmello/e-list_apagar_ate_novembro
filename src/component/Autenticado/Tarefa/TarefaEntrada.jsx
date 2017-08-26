@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Tarefa from '../controller/Tarefa';
+import Tarefa from '../../../controller/Tarefa';
 
 class Entrada extends Component {
     constructor(props) {
