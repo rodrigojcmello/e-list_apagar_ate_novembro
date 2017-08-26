@@ -6,7 +6,7 @@ import Usuario from '../../../controller/Usuario';
 import Lista from './Lista';
 import Entrada from './Entrada';
 
-class CategoriaIndex extends Component {
+class Index extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -30,7 +30,7 @@ class CategoriaIndex extends Component {
         return (
             <div>
                 <button onClick={ this.encerrarSessao.bind(this) }>
-                    Sair
+                    Sair 2
                 </button>
                 <Lista
                     lista={ this.state.lista }
@@ -43,4 +43,4 @@ class CategoriaIndex extends Component {
     }
 }
 
-export default CategoriaIndex;
+export default Index;

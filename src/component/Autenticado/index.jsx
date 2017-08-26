@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Redirect, withRouter } from 'react-router-dom';
+import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 
 import Categoria from './Categoria';
 import Tarefa from './Tarefa';
@@ -12,7 +12,7 @@ class Autenticado extends Component {
         console.log('### Autenticado props');
         console.log(this.props);
         return (
-            <div>
+            <Switch>
                 <Route
                     exact
                     path={ this.props.match.url }
@@ -21,16 +21,17 @@ class Autenticado extends Component {
                     ) }
                 />
                 <Route
+                    path={ this.props.match.url + '/Categoria/Trabalho' }
+                    component={ Tarefa }
+                />
+                <Route
                     path={ this.props.match.url + '/Categoria' }
                     render={ () => (
                         <Categoria atualizarToken={ this.props.atualizarToken } />
                     ) }
                 />
-                {/* <Route
-                    path={ this.props.match.url + '/Categoria/Trabalho' }
-                    component={ Tarefa }
-                /> */}
-            </div>
+
+            </Switch>
         );
     }
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import { HashRouter, Switch, Route, Redirect, withRouter } from 'react-router-dom';
+import { HashRouter, Switch, Route, Redirect } from 'react-router-dom';
 import update from 'immutability-helper';
 
 import Usuario from './controller/Usuario';
@@ -8,6 +8,10 @@ import Usuario from './controller/Usuario';
 import RotaRedirecionar from './component/RotaRedirecionar';
 import Entrar from './component/Entrar';
 import Autenticado from './component/Autenticado';
+
+if (process.env.NODE_ENV == 'production') {
+    console.log = () => {};
+}
 
 class App extends Component {
     constructor(props) {

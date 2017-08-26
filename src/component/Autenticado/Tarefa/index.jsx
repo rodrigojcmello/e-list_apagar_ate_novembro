@@ -1,19 +1,13 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import { IntlProvider, FormattedMessage } from 'react-intl';
-import store from 'store';
 
 import Tarefa from '../../../controller/Tarefa';
 
-import TarefaLista from './TarefaLista';
-import TarefaEntrada from './TarefaEntrada';
-import TarefaArquivar from './TarefaArquivar';
+import Lista from './Lista';
+import Entrada from './Entrada';
+import Arquivar from './Arquivar';
 
-if (process.env.NODE_ENV == 'production') {
-    console.log = () => {};
-}
-
-class App extends Component {
+class Index extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -31,32 +25,21 @@ class App extends Component {
         const { name, unreadCount } = this.state;
         return (
             <div>
-                <FormattedMessage
-                    id='welcome'
-                    defaultMessage={ `Hello {name}, you have {unreadCount, number} {unreadCount, plural,
-                      one {message}
-                      other {messages}
-                    }` }
-                    values={{name: <b>{name}</b>, unreadCount}}
-                />
-                <TarefaArquivar
+                <hr />
+                <Arquivar
                     atualizarLista={ this.atualizarLista.bind(this) }
                 />
-                <TarefaLista
+                <Lista
                     lista={ this.state.lista }
                     atualizarLista={ this.atualizarLista.bind(this) }
                 />
-                <TarefaEntrada
+                <Entrada
                     atualizarLista={ this.atualizarLista.bind(this) }
                 />
+                <hr />
             </div>
         );
     }
 }
 
-render(
-    <IntlProvider locale='en'>
-        <App />
-    </IntlProvider>,
-    document.getElementById('app')
-);
+export default Index;
