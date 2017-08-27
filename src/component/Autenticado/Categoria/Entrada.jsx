@@ -4,19 +4,20 @@ class Entrada extends Component {
     constructor(props) {
         super(props);
     }
+    enviar(event) {
+        event.preventDefault();
+        if (this.entrada.value.trim().length > 0) {
+            Categoria.adicionar(
+                this.entrada,
+                this.props.atualizarLista
+            );
+        }
+    }
     render() {
         return (
             <form
                 className='categoria-entrada'
-                onSubmit={
-                    event => {
-                        Categoria.adicionar(
-                            event,
-                            this.entrada,
-                            this.props.atualizarLista
-                        );
-                    }
-                }
+                onSubmit={ this.enviar.bind(this) }
             >
                 <input
                     autoComplete='off'

@@ -18,10 +18,14 @@ const config = {
             options: {
                 presets: ['stage-3', 'es2015', 'react'],
                 cacheDirectory: true,
-                sourceMaps: true
+                sourceMaps: process.env.NODE_ENV == 'production' ? false : true
             },
             include: __dirname + '/src',
             exclude: /node_modules/
+        },
+        {
+            test: /\.css$/,
+            loader: ['style-loader', 'css-loader?name=cordova/www/assets/[ext]/[name].[ext]']
         }
     ] },
     plugins: [

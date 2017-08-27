@@ -32,6 +32,7 @@ class Index extends Component {
                 </button>
                 <Lista
                     lista={ this.state.lista }
+                    atualizarLista={ this.atualizarLista.bind(this) }
                 />
                 <Entrada
                     atualizarLista={ this.atualizarLista.bind(this) }
