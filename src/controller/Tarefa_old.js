@@ -1,6 +1,6 @@
 class Tarefa {
 	constructor() {
-		this.titulo = store.get('lista') ? store.get('lista') : [];
+		this.lista = store.get('lista') ? store.get('lista') : [];
 		this.lista_oculta = (
 			store.get('lista_oculta') ?
 			store.get('lista_oculta') : []

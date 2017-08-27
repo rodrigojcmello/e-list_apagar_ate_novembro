@@ -1,5 +1,3 @@
-import React, { Component } from 'react';
-
 import Tarefa from '../../../controller/Tarefa';
 
 const TarefaArquivar = props => (

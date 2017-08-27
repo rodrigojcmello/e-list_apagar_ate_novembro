@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 
 import Categoria from './Categoria';
@@ -9,8 +8,6 @@ class Autenticado extends Component {
         super(props);
     }
     render() {
-        console.log('### Autenticado props');
-        console.log(this.props);
         return (
             <Switch>
                 <Route
@@ -30,7 +27,6 @@ class Autenticado extends Component {
                         <Categoria atualizarToken={ this.props.atualizarToken } />
                     ) }
                 />
-
             </Switch>
         );
     }

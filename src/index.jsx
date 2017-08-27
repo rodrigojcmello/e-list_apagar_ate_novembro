@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 import { render } from 'react-dom';
 import { HashRouter, Switch, Route, Redirect } from 'react-router-dom';
 import update from 'immutability-helper';

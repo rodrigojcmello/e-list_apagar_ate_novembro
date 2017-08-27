@@ -28,6 +28,11 @@ const config = {
         new html({
             template: './src/index.html',
             inject: false
+        }),
+        new webpack.ProvidePlugin({
+            React: 'react',
+            Component: ['react', 'Component'],
+            store: 'store'
         })
     ]
 };

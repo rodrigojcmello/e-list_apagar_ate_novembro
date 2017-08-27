@@ -1,5 +1,3 @@
-import store from 'store';
-
 if (!store.get('categoria')) {
     // store.set('catategoria', { lista: [] });
     store.set('catategoria', { lista: [

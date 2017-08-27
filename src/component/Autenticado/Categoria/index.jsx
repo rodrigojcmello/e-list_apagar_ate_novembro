@@ -1,6 +1,4 @@
-import React, { Component } from 'react';
-
-import Categoria from '../../../controller/Categoria';
+import CategoriaLista from '../../../model/CategoriaLista';
 import Usuario from '../../../controller/Usuario';
 
 import Lista from './Lista';
@@ -10,8 +8,9 @@ class Index extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            lista: Categoria.lista
+            lista: CategoriaLista.categorias
         };
+        console.log('this.state', this.state);
     }
     encerrarSessao() {
         Usuario.sair((retorno) => {
@@ -23,14 +22,11 @@ class Index extends Component {
     atualizarLista(lista) {
         this.setState({ lista: lista });
     }
-    adicionarCategoria() {
-
-    }
     render() {
         return (
             <div>
                 <button onClick={ this.encerrarSessao.bind(this) }>
-                    Sair 2
+                    Sair
                 </button>
                 <Lista
                     lista={ this.state.lista }

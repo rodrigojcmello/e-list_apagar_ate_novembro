@@ -1,5 +1,3 @@
-import store from 'store';
-
 class Usuario {
 	constructor() {
 		this.token = store.get('token');

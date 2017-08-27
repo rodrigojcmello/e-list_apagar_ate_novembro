@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 const history = require('history').createHashHistory();
 
 class RotaRedirecionar extends Component {

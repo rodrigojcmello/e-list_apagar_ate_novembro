@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 import Usuario from '../controller/Usuario';
 const history = require('history').createHashHistory();
 

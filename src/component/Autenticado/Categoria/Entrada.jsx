@@ -1,31 +1,29 @@
-import React, { Component } from 'react';
-
-import Categoria from '../../../controller/Categoria';
+import Categoria from '../../../controller/CategoriaController';
+const Cat = new Categoria();
 
 class Entrada extends Component {
     constructor(props) {
         super(props);
     }
-    enviar(event) {
-        event.preventDefault();
-        if (this.entrada.value) {
-            Categoria.adicionar(
-                { titulo: this.entrada.value },
-                this.props.atualizarLista
-            );
-            this.entrada.value = '';
-        }
-    }
     render() {
         return (
             <form
                 className='categoria-entrada'
-                onSubmit={ this.enviar.bind(this) }
+                onSubmit={
+                    event => {
+                        Cat.adicionar(
+                            event,
+                            this.entrada,
+                            this.props.atualizarLista
+                        );
+                    }
+                }
             >
                 <input
-                    type='text'
-                    placeholder='O que você quer?'
+                    autoComplete='off'
+                    placeholder='Nome da categoria'
                     ref={ el => this.entrada = el }
+                    type='text'
                 />
             </form>
         );

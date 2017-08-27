@@ -1,6 +1,3 @@
-import React, { Component } from 'react';
-import { render } from 'react-dom';
-
 import Tarefa from '../../../controller/Tarefa';
 
 import Lista from './Lista';
