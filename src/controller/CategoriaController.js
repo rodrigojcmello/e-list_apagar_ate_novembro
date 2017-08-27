@@ -1,16 +1,18 @@
 import Categoria from '../model/Categoria';
-import CategoriaLista from '../model/CategoriaLista';
 
-class CategoriaController {
+const Controller = {
 
-    adicionar(event, entrada, atualizarLista) {
+    lista: store.get('categoria_lista') ? store.get('categoria_lista') : [],
+
+    adicionar: (event, entrada, atualizarLista) => {
         event.preventDefault();
         let categoria = new Categoria(entrada.value);
         entrada.value = '';
-        CategoriaLista.adicionar(categoria, atualizarLista);
-        console.log(CategoriaLista.categorias);
+        Controller.lista.push(categoria);
+        store.set('categoria_lista', Controller.lista);
+        atualizarLista(Controller.lista);
     }
 
-}
+};
 
-export default CategoriaController;
+export default Controller;

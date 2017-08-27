@@ -1,5 +1,4 @@
 import Categoria from '../../../controller/CategoriaController';
-const Cat = new Categoria();
 
 class Entrada extends Component {
     constructor(props) {
@@ -11,7 +10,7 @@ class Entrada extends Component {
                 className='categoria-entrada'
                 onSubmit={
                     event => {
-                        Cat.adicionar(
+                        Categoria.adicionar(
                             event,
                             this.entrada,
                             this.props.atualizarLista
