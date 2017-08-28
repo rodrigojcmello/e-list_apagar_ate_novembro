@@ -6,7 +6,7 @@ const config = {
     entry: './src/index.jsx',
     output: {
         filename: 'pacote.min.js',
-        path: __dirname + '/cordova/www'
+        path: `${ __dirname }/cordova/www`
     },
     resolve: {
         extensions: ['.js', '.jsx']
@@ -20,7 +20,7 @@ const config = {
                 cacheDirectory: true,
                 sourceMaps: process.env.NODE_ENV == 'production' ? false : true
             },
-            include: __dirname + '/src',
+            include: `${ __dirname }/src`,
             exclude: /node_modules/
         },
         {
