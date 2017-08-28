@@ -15,10 +15,7 @@ class Entrada extends Component {
     }
     render() {
         return (
-            <form
-                className='categoria-entrada'
-                onSubmit={ this.enviar.bind(this) }
-            >
+            <form onSubmit={ this.enviar.bind(this) } >
                 <input
                     autoComplete='off'
                     placeholder='Nome da categoria'

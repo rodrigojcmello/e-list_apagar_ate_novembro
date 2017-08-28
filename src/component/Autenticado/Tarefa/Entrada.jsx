@@ -1,36 +1,29 @@
-import Tarefa from '../../../controller/Tarefa';
+import Tarefa from '../../../controller/TarefaController';
 
 class Entrada extends Component {
     constructor(props) {
         super(props);
     }
-    enviarTarefa(event) {
+    enviar(event) {
         event.preventDefault();
-
-        if (this.entrada.value) {
+        if (this.entrada.value.trim().length > 0) {
             Tarefa.adicionar(
-                { titulo: this.entrada.value },
+                this.entrada,
+                this.props.categoria,
                 this.props.atualizarLista
             );
-            this.entrada.value = '';
-            // this.entrada.blur();
         }
     }
     render() {
         return (
-            <div
-                className='tarefa-entrada'
-            >
-                <form
-                    onSubmit={ this.enviarTarefa.bind(this) }
-                >
-                    <input
-                        type='text'
-                        placeholder='O que você quer?'
-                        ref={ el => this.entrada = el }
-                    />
-                </form>
-            </div>
+            <form onSubmit={ this.enviar.bind(this) } >
+                <input
+                    autoComplete='off'
+                    placeholder='O que deseja fazer?'
+                    ref={ el => this.entrada = el }
+                    type='text'
+                />
+            </form>
         );
     }
 }

@@ -47,7 +47,7 @@ class App extends Component {
 						<Autenticado
                             atualizarToken={ this.atualizarToken.bind(this) }
                         /> :
-						<Redirect to='/' key='BUCETA' />
+						<Redirect to='/' />
 					) } />
 					<Route component={ RotaRedirecionar } />
 				</Switch>

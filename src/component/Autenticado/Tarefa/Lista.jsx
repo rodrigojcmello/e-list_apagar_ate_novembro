@@ -1,24 +1,32 @@
-import Tarefa from '../../../controller/Tarefa';
+import Tarefa from '../../../controller/TarefaController';
 
-class TarefaLista extends Component {
+class Lista extends Component {
     constructor(props) {
         super(props);
     }
     render() {
+        console.log('this.props LISTA', this.props);
         return (
             <div
                 className='tarefa-lista'
             >
-                { this.props.lista.map((tarefa, i) => {
+                { this.props.lista.map((tarefa, index) => {
                     return (
                         <div
-                            key={ i }
+                            key={ index }
                             style={ tarefa.concluida ? { opacity: 0.3 } : {} }
                         >
                             <input
                                 type='checkbox'
                                 checked={ tarefa.concluida ? 'checked' : '' }
-                                onChange={ Tarefa.concluir.bind(Tarefa, i, this.props.atualizarLista) }
+                                onChange={
+                                    Tarefa.concluir.bind(
+                                        Tarefa,
+                                        index,
+                                        this.props.categoria,
+                                        this.props.atualizarLista
+                                    )
+                                }
                             />
                             { tarefa.titulo }
                         </div>
@@ -29,4 +37,4 @@ class TarefaLista extends Component {
     }
 }
 
-export default TarefaLista;
+export default Lista;

@@ -14,15 +14,15 @@ class Autenticado extends Component {
                     exact
                     path={ this.props.match.url }
                     render={ () => (
-                        <Redirect to={ this.props.match.url + '/Categoria' } />
+                        <Redirect to={ `${ this.props.match.url }/Categoria` } />
                     ) }
                 />
                 <Route
-                    path={ this.props.match.url + '/Categoria/Trabalho' }
+                    path={ `${ this.props.match.url }/Categoria/:id/:titulo` }
                     component={ Tarefa }
                 />
                 <Route
-                    path={ this.props.match.url + '/Categoria' }
+                    path={ `${ this.props.match.url }/Categoria` }
                     render={ () => (
                         <Categoria atualizarToken={ this.props.atualizarToken } />
                     ) }

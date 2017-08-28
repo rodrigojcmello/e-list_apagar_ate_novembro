@@ -6,8 +6,9 @@ class Lista extends Component {
     constructor(props) {
         super(props);
     }
-    exibirCategoria() {
-        history.push('/Autenticado/Categoria/Trabalho');
+    abrir(index, titulo) {
+        titulo = titulo.replace(' ', '-');
+        history.push(`/Autenticado/Categoria/${ index }/${ titulo }`);
     }
     apagar(index, titulo) {
         if (confirm(`Deseja apagar a categoria "${ titulo }"?`)) {
@@ -19,15 +20,11 @@ class Lista extends Component {
             <div>
                 { this.props.lista.map((categoria, index) => {
                     return (
-                        <div
-                            key={ index }
-                            // onClick={ this.exibirCategoria.bind() }
-                        >
-                            { categoria.titulo }
-                            <button
-                                type='button'
-                                onClick={ this.apagar.bind(this, index, categoria.titulo) }
-                            >
+                        <div key={ index }>
+                            <span onClick={ this.abrir.bind(this, index, categoria.titulo) } >
+                                { categoria.titulo }
+                            </span>
+                            <button type='button' onClick={ this.apagar.bind(this, index, categoria.titulo) } >
                                 apagar
                             </button>
                         </div>
