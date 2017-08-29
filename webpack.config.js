@@ -24,8 +24,31 @@ const config = {
             exclude: /node_modules/
         },
         {
+            test: /\.(jpe?g|png|gif|svg)$/,
+            loader: 'file-loader?name=cordova/www/assets/img/[name].[ext]'
+        },
+        {
             test: /\.css$/,
-            loader: ['style-loader', 'css-loader?name=cordova/www/assets/[ext]/[name].[ext]']
+            loader: [ 'style-loader', 'css-loader?name=cordova/www/assets/[ext]/[name].[ext]' ]
+        },
+        {
+            test: /\.sss$/,
+            loader: [
+                'style-loader',
+                {
+                    loader: 'postcss-loader',
+                    options: {
+                        parser: 'sugarss',
+                        plugins: (loader) => [
+                            require('precss')(),
+                            require('autoprefixer')(),
+                            require('postcss-calc')(),
+                            process.env.NODE_ENV == 'production' ?
+                                require('cssnano')() : () => {}
+                        ]
+                    }
+                }
+            ]
         }
     ] },
     plugins: [
