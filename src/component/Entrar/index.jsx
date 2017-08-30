@@ -17,16 +17,15 @@ class Entrar extends Component {
 	render() {
 		return (
 			<div>
+				<Autenticador className='facebook' />
+					Entrar com Facebook
+				</Autenticador/>
 				<BotaoAutenticador
-					autenticador='facebook'
+					className='google'
 					titulo='Entrar com Facebook'
 				/>
 				<BotaoAutenticador
-					autenticador='google'
-					titulo='Entrar com Facebook'
-				/>
-				<BotaoAutenticador
-					autenticador='microsoft'
+					className='microsoft'
 					titulo='Entrar com Facebook'
 				/>
 				<button onClick={ this.autenticarUsuario.bind(this) } >
