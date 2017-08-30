@@ -12,6 +12,8 @@ if (process.env.NODE_ENV == 'production') {
     console.log = () => {};
 }
 
+import './index.sss';
+
 class App extends Component {
     constructor(props) {
         super(props);
