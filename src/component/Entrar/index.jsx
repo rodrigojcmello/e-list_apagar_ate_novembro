@@ -19,7 +19,7 @@ class Entrar extends Component {
 			<div>
 				<Autenticador className='facebook' />
 					Entrar com Facebook
-				</Autenticador/>
+				</Autenticador>
 				<BotaoAutenticador
 					className='google'
 					titulo='Entrar com Facebook'
