@@ -1,12 +1,12 @@
 require('./estilo.sss');
 
-const BotaoAutenticador = props => (
+const Autenticador = props => (
     <button
-        className={ `botao-autenticador ${ props.autenticador }` }
+        className={ `autenticador ${ props.className }` }
     >
-        <img src={ require(`./logo-${ props.autenticador }.png`) } />
+        <img src={ require(`./logo-${ props.className }.png`) } />
         { props.titulo }
     </button>
 );
 
-module.exports = BotaoAutenticador;
+module.exports = Autenticador;
