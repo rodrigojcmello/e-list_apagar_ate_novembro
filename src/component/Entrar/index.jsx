@@ -17,7 +17,7 @@ class Entrar extends Component {
 	render() {
 		return (
 			<div>
-				<Autenticador className='facebook' />
+				<Autenticador className='facebook'>
 					Entrar com Facebook
 				</Autenticador>
 				<BotaoAutenticador
