@@ -1,0 +1,39 @@
+$height: 40px
+
+.autenticador
+    background-color: white
+    border-radius: 4px
+    height: $height
+    padding: 0
+    width: 100%
+    margin-bottom: 16px
+
+.autenticador.facebook
+    border: 1px solid color(#3b5998 a(25%))
+    color: #3b5998
+
+.autenticador.google
+    border: 1px solid color(#4285f4 a(25%))
+    color: #4285f4
+
+.autenticador.microsoft
+    border: 1px solid color(#737373 a(25%))
+    color: #737373
+
+.autenticador > div:nth-child(1)
+    height: calc($height - 2px)
+    width: calc($height - 2px)
+    padding: 8px
+    float: left
+
+.autenticador > div:nth-child(1) > img
+    width: 100%
+    height: 100%
+
+.autenticador > div:nth-child(2)
+    line-height: calc($height - 2px)
+    font-size: 14px
+    text-transform: uppercase
+    font-weight: 400
+    width: calc(100% - (($height - 2px) * 2))
+    float: left

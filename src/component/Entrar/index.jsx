@@ -1,7 +1,7 @@
 import Usuario from '../../controller/Usuario';
 const history = require('history').createHashHistory();
 
-import BotaoAutenticador from './BotaoAutenticador';
+import Autenticador from './Autenticador';
 
 class Entrar extends Component {
 	constructor(props) {
@@ -17,17 +17,15 @@ class Entrar extends Component {
 	render() {
 		return (
 			<div>
-				<Autenticador className='facebook'>
+				<Autenticador tipo='facebook'>
 					Entrar com Facebook
 				</Autenticador>
-				<BotaoAutenticador
-					className='google'
-					titulo='Entrar com Facebook'
-				/>
-				<BotaoAutenticador
-					className='microsoft'
-					titulo='Entrar com Facebook'
-				/>
+				<Autenticador tipo='google'>
+					Entrar com Google
+				</Autenticador>
+				<Autenticador tipo='microsoft'>
+					Entrar com Microsoft
+				</Autenticador>
 				<button onClick={ this.autenticarUsuario.bind(this) } >
 					Entrar
 				</button>
