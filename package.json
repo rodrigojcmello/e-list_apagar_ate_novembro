@@ -7,6 +7,7 @@
     "start": "webpack-dev-server",
     "prod": "export NODE_ENV=production && webpack-dev-server",
     "build": "export NODE_ENV=production && webpack",
+    "android": "webpack && cd cordova && cordova run android",
     "browser": "export NODE_ENV=production && webpack && cd cordova && cordova run browser",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -28,8 +29,8 @@
     "postcss-calc": "^6.0.0",
     "postcss-loader": "^2.0.6",
     "precss": "^2.0.0",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
+    "react": "next",
+    "react-dom": "next",
     "react-intl": "^2.3.0",
     "react-router-dom": "^4.2.2",
     "react-transition-group": "^2.2.0",

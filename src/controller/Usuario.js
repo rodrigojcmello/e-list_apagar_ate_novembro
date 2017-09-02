@@ -4,10 +4,10 @@ class Usuario {
 	constructor() {
 		this.token = store.get('token');
 	}
-	autenticar(callback) {
+	autenticarPorEmail(atualizarToken) {
 		store.set('token', '12345');
 		this.token = '12345';
-		callback({ sucesso: true });
+		atualizarToken(this.token);
 	}
 	sair(callback) {
 		localStorage.clear();

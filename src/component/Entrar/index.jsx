@@ -7,28 +7,32 @@ class Entrar extends Component {
 	constructor(props) {
 		super(props);
 	}
-	autenticarUsuario() {
-		Usuario.autenticar((retorno) => {
-			if (retorno.sucesso) {
-				this.props.atualizarToken(Usuario.token);
-			}
-		});
-	}
+	// autenticarUsuario() {
+	// 	Usuario.autenticar((retorno) => {
+	// 		if (retorno.sucesso) {
+	// 			this.props.atualizarToken(Usuario.token);
+	// 		}
+	// 	});
+	// }
 	render() {
 		return (
 			<div>
-				<Autenticador tipo='facebook'>
-					Entrar com Facebook
-				</Autenticador>
+				<img src={ require('./logo.png') } />
 				<Autenticador tipo='google'>
 					Entrar com Google
 				</Autenticador>
 				<Autenticador tipo='microsoft'>
 					Entrar com Microsoft
 				</Autenticador>
-				<button onClick={ this.autenticarUsuario.bind(this) } >
-					Entrar
-				</button>
+				<Autenticador tipo='facebook'>
+					Entrar com Facebook
+				</Autenticador>
+				<Autenticador
+					tipo='email'
+					onClick={ () => { Usuario.autenticarPorEmail(this.props.atualizarToken) } }
+				>
+					Entrar com E-mail
+				</Autenticador>
 			</div>
 		);
 	}
