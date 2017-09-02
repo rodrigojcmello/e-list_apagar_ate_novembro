@@ -1,61 +1,9 @@
 import { render } from 'react-dom';
-import { HashRouter, Switch, Route, Redirect } from 'react-router-dom';
-import update from 'immutability-helper';
+import { HashRouter } from 'react-router-dom';
+import App from './component/App';
 
-import Usuario from './controller/Usuario';
-
-import RotaRedirecionar from './component/RotaRedirecionar';
-import Entrar from './component/Entrar';
-import Autenticado from './component/Autenticado';
-
-if (process.env.NODE_ENV == 'production') {
-    console.log = () => {};
-}
-
-import './index.sss';
-
-class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            usuario: {
-                token: Usuario.token
-            }
-        };
-    }
-    atualizarToken(token) {
-        this.setState({
-            usuario: update(this.state.usuario, { 'token': { $set: token } })
-        });
-    }
-    render() {
-        return (
-			<HashRouter>
-				<Switch>
-					<Route exact path='/' render={ () => (
-						this.state.usuario.token ?
-						<Redirect to='/Autenticado' /> :
-						<Redirect to='/Entrar' />
-					) } />
-					<Route path='/Entrar' render={ () => (
-						this.state.usuario.token ?
-						<Redirect to='/Autenticado' /> :
-						<Entrar
-                            atualizarToken={ this.atualizarToken.bind(this) }
-                        />
-					) } />
-					<Route path='/Autenticado' render={ () => (
-						this.state.usuario.token ?
-						<Autenticado
-                            atualizarToken={ this.atualizarToken.bind(this) }
-                        /> :
-						<Redirect to='/' />
-					) } />
-					<Route component={ RotaRedirecionar } />
-				</Switch>
-			</HashRouter>
-        );
-    }
-}
-
-render(<App />, document.getElementById('app'));
+render((
+    <HashRouter>
+        <App />
+    </HashRouter>
+), document.getElementById('app'));

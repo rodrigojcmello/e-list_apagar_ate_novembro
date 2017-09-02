@@ -24,7 +24,7 @@ class Index extends Component {
     }
     render() {
         return (
-            <div>
+            <div className='page-full'>
                 <button
                     onClick={ this.encerrarSessao.bind(this) }
                 >

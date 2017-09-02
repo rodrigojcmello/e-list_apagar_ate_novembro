@@ -16,7 +16,7 @@ class Entrar extends Component {
 	// }
 	render() {
 		return (
-			<div>
+			<div className='page-full'>
 				<img src={ require('./logo.png') } />
 				<Autenticador tipo='google'>
 					Entrar com Google

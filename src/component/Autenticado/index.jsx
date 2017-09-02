@@ -7,9 +7,17 @@ class Autenticado extends Component {
     constructor(props) {
         super(props);
     }
+    shouldComponentUpdate(nextProps, nextState) {
+        if (this.props != nextState) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     render() {
+        console.log('### BUCETA');
         return (
-            <Switch>
+            <div>
                 <Route
                     exact
                     path={ this.props.match.url }
@@ -22,12 +30,13 @@ class Autenticado extends Component {
                     component={ Tarefa }
                 />
                 <Route
+                    exact
                     path={ `${ this.props.match.url }/Categoria` }
                     render={ () => (
                         <Categoria atualizarToken={ this.props.atualizarToken } />
                     ) }
                 />
-            </Switch>
+            </div>
         );
     }
 }

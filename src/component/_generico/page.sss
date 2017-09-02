@@ -1,0 +1,79 @@
+.BUCETA
+    background: red
+    height: 100vh
+    width: 100vw
+
+.page
+    background-color: white
+    height: 100vh
+    left: 0
+    /*position: absolute*/
+    right: 0
+    top: 0
+    transition-timing-function: ease-in-out
+    width: 100vw
+    z-index: 0
+
+// Fade Slide Left -------------------------------------------------------------
+
+// Left Enter
+
+.page.fade-slide-left-enter
+    left: 30vw
+    opacity: 0
+
+.page.fade-slide-left-enter-active
+    left: 0
+    opacity: 1
+    transition: left 0.4s, opacity 0.4s
+
+// Left Exit
+
+.page.fade-slide-left-leave
+    opacity: 1
+
+.page.fade-slide-left-leave-active
+    left: -30vw
+    opacity: 0
+    transition: left 0.4s, opacity 0.4s
+
+// Fade Slide Right ------------------------------------------------------------
+
+// Left Enter
+
+.page.fade-slide-right-enter
+    left: auto
+    opacity: 0
+    right: 30vw
+
+.page.fade-slide-right-enter-active
+    opacity: 1
+    right: 0
+    transition: right 0.4s, opacity 0.4s
+
+// Left Leave
+
+.page.fade-slide-right-leave
+    opacity: 1
+
+.page.fade-slide-right-leave-active
+    left: auto
+    opacity: 0
+    right: -30vw
+    transition: right 0.4s, opacity 0.4s
+
+// ---
+
+.fade-enter
+    opacity: 0.01
+
+.fade-enter.fade-enter-active
+    opacity: 1
+    transition: opacity 500ms ease-in
+
+.fade-leave
+    opacity: 1
+
+.fade-leave.fade-leave-active
+    opacity: 0.01
+    transition: opacity 300ms ease-in
