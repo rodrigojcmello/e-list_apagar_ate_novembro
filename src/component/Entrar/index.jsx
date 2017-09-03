@@ -9,14 +9,14 @@ class Entrar extends Component {
 	}
 	componentWillMount() {
 		if (Usuario.token) {
+			// history.push(Usuario.nomeURL());
 			history.push('/Rodrigo-Mello');
-			// history.push(Usuario.nomeURL);
 		}
 	}
 	componentWillUpdate() {
 		if (Usuario.token) {
+			// history.push(Usuario.nomeURL());
 			history.push('/Rodrigo-Mello');
-			// history.push(Usuario.nomeURL);
 		}
 	}
 	render() {

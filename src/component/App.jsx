@@ -22,7 +22,7 @@ const PrivateRoute = ({ component: Component, token, ...rest }) => (
         <Component { ...rest } /> :
         <Redirect to={{
             pathname: '/Entrar',
-            state: { from: props.location }
+            state: { from: rest.location }
         }} />
     )}/>
 );
@@ -32,19 +32,22 @@ class App extends Component {
         super(props);
         this.state = {
             usuario: {
-                token: Usuario.token
+                token: null
             }
         };
     }
     atualizarToken(token) {
         this.setState({
-            usuario: update(this.state.usuario, { 'token': { $set: token } })
+            usuario: update(this.state.usuario, { token: { $set: token } })
         });
         console.log('Token Atualizado');
     }
     render() {
         return (
             <div>
+                <Route exact path='/' render={ () => (
+                    <Redirect to='/Entrar' />
+                ) } />
                 <TransitionGroup component="main" className="page-main">
                     <CSSTransition
                         appear
@@ -54,28 +57,25 @@ class App extends Component {
                     >
                         <section className="page">
                             <Switch location={ this.props.location }>
-                                <Route exact path='/' render={ () => (
-                                    <Redirect to='/Entrar' />
-                                ) } />
-                                <Route path='/Entrar' render={ () => (
-                                    <Entrar atualizarToken={ this.atualizarToken.bind(this) } />
-                                ) } />
-                                <PrivateRoute
+                                {/* <PrivateRoute
                                     path='/:usuario'
                                     component={ Categoria }
                                     token={ this.state.usuario.token }
                                     atualizarToken={ this.atualizarToken.bind(this) }
-                                />
-                                <Route
+                                /> */}
+                                <Route path='/Entrar' render={ () => (
+                                    <Entrar atualizarToken={ this.atualizarToken.bind(this) } />
+                                ) } />
+                                {/* <Route
                                     path='/Tarefa/:id/:titulo'
                                     token={ this.state.usuario.token }
                                     component={ Tarefa }
-                                />
-                                <Route component={ RotaRedirecionar } />
+                                /> */}
                             </Switch>
                         </section>
                     </CSSTransition>
                 </TransitionGroup>
+                <Route component={ RotaRedirecionar } />
             </div>
         );
     }

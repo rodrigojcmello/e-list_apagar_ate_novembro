@@ -12,7 +12,6 @@ class Index extends Component {
         this.state = {
             lista: Categoria.lista
         };
-        console.log('this.state', this.state);
     }
     encerrarSessao() {
         Usuario.sair((retorno) => {
