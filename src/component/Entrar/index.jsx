@@ -9,14 +9,20 @@ class Entrar extends Component {
 	}
 	componentWillMount() {
 		if (Usuario.token) {
-			// history.push(Usuario.nomeURL());
-			history.push('/Rodrigo-Mello');
+			history.push(Usuario.nomeURL());
+			// history.push('/Rodrigo-Mello');
+			// console.log('Token existe', Usuario.token);
+			// console.log(!!Usuario.token);
+			// window.usuario = Usuario;
+		} else {
+			// console.log('Token não existe', Usuario.token);
+			// console.log(!!Usuario.token);
 		}
 	}
 	componentWillUpdate() {
 		if (Usuario.token) {
-			// history.push(Usuario.nomeURL());
-			history.push('/Rodrigo-Mello');
+			history.push(Usuario.nomeURL());
+			// history.push('/Rodrigo-Mello');
 		}
 	}
 	render() {

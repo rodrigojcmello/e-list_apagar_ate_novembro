@@ -50,32 +50,31 @@ class App extends Component {
                 ) } />
                 <TransitionGroup component="main" className="page-main">
                     <CSSTransition
-                        appear
                         classNames='fade-slide-left'
                         key={ this.props.location.pathname.split('/')[1] || '/' }
                         timeout={ 400 }
                     >
                         <section className="page">
                             <Switch location={ this.props.location }>
-                                {/* <PrivateRoute
+                                <Route path='/Entrar' render={ () => (
+                                    <Entrar atualizarToken={ this.atualizarToken.bind(this) } />
+                                ) } />
+                                <PrivateRoute
+                                    path='/Tarefa/:id/:titulo'
+                                    token={ this.state.usuario.token }
+                                    component={ Tarefa }
+                                />
+                                <PrivateRoute
                                     path='/:usuario'
                                     component={ Categoria }
                                     token={ this.state.usuario.token }
                                     atualizarToken={ this.atualizarToken.bind(this) }
-                                /> */}
-                                <Route path='/Entrar' render={ () => (
-                                    <Entrar atualizarToken={ this.atualizarToken.bind(this) } />
-                                ) } />
-                                {/* <Route
-                                    path='/Tarefa/:id/:titulo'
-                                    token={ this.state.usuario.token }
-                                    component={ Tarefa }
-                                /> */}
+                                />
                             </Switch>
                         </section>
                     </CSSTransition>
                 </TransitionGroup>
-                <Route component={ RotaRedirecionar } />
+                {/* <Route component={ RotaRedirecionar } /> */}
             </div>
         );
     }
