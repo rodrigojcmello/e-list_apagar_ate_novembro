@@ -1,5 +1,5 @@
 import Usuario from '../../controller/Usuario';
-const history = require('history').createHashHistory();
+// const history = require('history').createHashHistory();
 
 import Autenticador from './Autenticador';
 

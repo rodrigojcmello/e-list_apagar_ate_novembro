@@ -1,44 +1,24 @@
-import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
+const history = require('history').createHashHistory();
 
-import Categoria from './Categoria';
-import Tarefa from './Tarefa';
+import Usuario from '../../controller/Usuario.js';
 
 class Autenticado extends Component {
     constructor(props) {
         super(props);
     }
-    shouldComponentUpdate(nextProps, nextState) {
-        if (this.props != nextState) {
-            return true;
-        } else {
-            return false;
+    componentWillMount() {
+        console.log('#### will');
+        if (!Usuario.token) {
+            history.push('/Entrar');
         }
     }
     render() {
-        console.log('### BUCETA');
         return (
             <div>
-                <Route
-                    exact
-                    path={ this.props.match.url }
-                    render={ () => (
-                        <Redirect to={ `${ this.props.match.url }/Categoria` } />
-                    ) }
-                />
-                <Route
-                    path={ `${ this.props.match.url }/Categoria/:id/:titulo` }
-                    component={ Tarefa }
-                />
-                <Route
-                    exact
-                    path={ `${ this.props.match.url }/Categoria` }
-                    render={ () => (
-                        <Categoria atualizarToken={ this.props.atualizarToken } />
-                    ) }
-                />
+                { this.props.children }
             </div>
         );
     }
 }
 
-export default withRouter(Autenticado);
+export default Autenticado;

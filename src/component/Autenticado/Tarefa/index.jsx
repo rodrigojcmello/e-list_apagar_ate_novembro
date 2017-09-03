@@ -1,3 +1,5 @@
+import { withRouter } from 'react-router-dom';
+
 import Tarefa from '../../../controller/TarefaController';
 
 import Lista from './Lista';
@@ -37,4 +39,4 @@ class Index extends Component {
     }
 }
 
-export default Index;
+export default withRouter(Index);

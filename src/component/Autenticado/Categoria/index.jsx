@@ -4,6 +4,8 @@ import Usuario from '../../../controller/Usuario';
 import Lista from './Lista';
 import Entrada from './Entrada';
 
+// import Autenticado from '../index.jsx';
+
 class Index extends Component {
     constructor(props) {
         super(props);
@@ -24,7 +26,7 @@ class Index extends Component {
     }
     render() {
         return (
-            <div className='page-full'>
+            <div>
                 <button
                     onClick={ this.encerrarSessao.bind(this) }
                 >

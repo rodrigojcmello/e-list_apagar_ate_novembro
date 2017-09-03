@@ -8,7 +8,7 @@ class Lista extends Component {
     }
     abrir(index, titulo) {
         titulo = titulo.replace(' ', '-');
-        history.push(`/Autenticado/Categoria/${ index }/${ titulo }`);
+        history.push(`/Categoria/${ index }/${ titulo }`);
     }
     apagar(index, titulo) {
         if (confirm(`Deseja apagar a categoria "${ titulo }"?`)) {
