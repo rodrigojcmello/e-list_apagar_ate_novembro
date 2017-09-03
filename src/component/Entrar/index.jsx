@@ -1,5 +1,5 @@
 import Usuario from '../../controller/Usuario';
-// const history = require('history').createHashHistory();
+const history = require('history').createHashHistory();
 
 import Autenticador from './Autenticador';
 
@@ -7,13 +7,18 @@ class Entrar extends Component {
 	constructor(props) {
 		super(props);
 	}
-	// autenticarUsuario() {
-	// 	Usuario.autenticar((retorno) => {
-	// 		if (retorno.sucesso) {
-	// 			this.props.atualizarToken(Usuario.token);
-	// 		}
-	// 	});
-	// }
+	componentWillMount() {
+		if (Usuario.token) {
+			history.push('/Rodrigo-Mello');
+			// history.push(Usuario.nomeURL);
+		}
+	}
+	componentWillUpdate() {
+		if (Usuario.token) {
+			history.push('/Rodrigo-Mello');
+			// history.push(Usuario.nomeURL);
+		}
+	}
 	render() {
 		return (
 			<div className='page-full'>
