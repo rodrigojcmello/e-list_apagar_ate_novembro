@@ -17,7 +17,6 @@ class Index extends Component {
         this.setState({ lista: lista });
     }
     render() {
-        console.log('this.props', this.props);
         return (
             <div>
                 <hr />

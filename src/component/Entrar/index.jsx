@@ -10,19 +10,11 @@ class Entrar extends Component {
 	componentWillMount() {
 		if (Usuario.token) {
 			history.push(Usuario.nomeURL());
-			// history.push('/Rodrigo-Mello');
-			// console.log('Token existe', Usuario.token);
-			// console.log(!!Usuario.token);
-			// window.usuario = Usuario;
-		} else {
-			// console.log('Token não existe', Usuario.token);
-			// console.log(!!Usuario.token);
 		}
 	}
 	componentWillUpdate() {
 		if (Usuario.token) {
 			history.push(Usuario.nomeURL());
-			// history.push('/Rodrigo-Mello');
 		}
 	}
 	render() {
@@ -40,7 +32,12 @@ class Entrar extends Component {
 				</Autenticador>
 				<Autenticador
 					tipo='email'
-					onClick={ () => { Usuario.autenticarPorEmail(this.props.atualizarToken) } }
+					onClick={ () => {
+						Usuario.autenticarPorEmail(
+							this.props.atualizarToken,
+							this.props.atualizarTransicao
+						);
+					} }
 				>
 					Entrar com E-mail
 				</Autenticador>
