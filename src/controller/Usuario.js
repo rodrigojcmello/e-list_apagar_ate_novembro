@@ -1,6 +1,6 @@
 const history = require('history').createHashHistory();
-
 import Categoria from './CategoriaController';
+import config from '../../config';
 
 class Usuario {
 	constructor() {
@@ -8,13 +8,31 @@ class Usuario {
 		this.nome = store.get('usuario') ? store.get('usuario').nome : '';
 	}
 	autenticarPorEmail(atualizarToken, atualizarTransicao) {
-		store.set('usuario', {
-			token: this.token = '12345',
-			nome: this.nome = 'Rodrigo Mello'
-		});
-		atualizarToken(this.token);
-		atualizarTransicao('fade-slide-left');
-		history.push(this.nomeURL());
+		// store.set('usuario', {
+		// 	token: this.token = '12345',
+		// 	nome: this.nome = 'Rodrigo Mello'
+		// });
+		// atualizarToken(this.token);
+		// atualizarTransicao('fade-slide-left');
+		// history.push(this.nomeURL());
+		const ajax = new XMLHttpRequest();
+		ajax.open('post', config.host + '/autenticar/email');
+		ajax.setRequestHeader('content-type', 'application/json');
+		ajax.onreadystatechange = () => {
+			if (ajax.readyState != 4 || ajax.status != 200) return;
+			console.log('ajax.response', ajax.response);
+			let retorno = JSON.parse(ajax.response);
+			console.log('nome', retorno.nome);
+			console.log('estado', retorno.estado_civil);
+			console.log('ano', retorno.ano);
+			console.log('bool', retorno.bool);
+		};
+		ajax.send(
+			JSON.stringify({
+				Email: 'Copo88@mail.com',
+				Nome: 'Rafael'
+			})
+		);
 	}
 	nomeURL() {
 		return `/${ this.nome.replace(' ', '-') }`;
