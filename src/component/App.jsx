@@ -49,13 +49,13 @@ class App extends Component {
         return (
             <div>
                 <Route exact path='/' render={ () => (
-                    <Redirect to='/Entrar' />
+                    <Redirect to='Entrar' />
                 ) } />
                 <TransitionGroup component="main" className="page-main">
                     <CSSTransition
                         classNames={ this.state.transicao }
                         key={ this.props.location.pathname.split('/')[1] || '/' }
-                        timeout={ this.props.transicao ? 400 : 0 }
+                        timeout={ this.state.transicao ? 400 : 0 }
                     >
                         <section className="page">
                             <Switch location={ this.props.location }>
@@ -75,6 +75,7 @@ class App extends Component {
                                     component={ Categoria }
                                     token={ this.state.usuario.token }
                                     atualizarToken={ this.atualizarToken.bind(this) }
+                                    atualizarTransicao={ this.atualizarTransicao.bind(this) }
                                 />
                             </Switch>
                         </section>

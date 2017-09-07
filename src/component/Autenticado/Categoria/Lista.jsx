@@ -8,6 +8,7 @@ class Lista extends Component {
     }
     abrir(index, titulo) {
         titulo = titulo.replace(' ', '-');
+        this.props.atualizarTransicao('fade-slide-left');
         history.push(`/Tarefa/${ index }/${ titulo }`);
     }
     apagar(index, titulo) {

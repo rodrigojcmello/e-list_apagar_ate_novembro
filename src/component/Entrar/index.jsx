@@ -1,5 +1,7 @@
-import Usuario from '../../controller/Usuario';
+import { Link } from 'react-router-dom';
 const history = require('history').createHashHistory();
+
+import Usuario from '../../controller/Usuario';
 
 import Autenticador from './Autenticador';
 
@@ -8,14 +10,17 @@ class Entrar extends Component {
 		super(props);
 	}
 	componentWillMount() {
-		if (Usuario.token) {
-			history.push(Usuario.nomeURL());
-		}
+		if (Usuario.token) history.push(Usuario.nomeURL());
 	}
-	componentWillUpdate() {
-		if (Usuario.token) {
-			history.push(Usuario.nomeURL());
-		}
+	// componentWillUpdate() {
+	// 	if (Usuario.token) {
+	// 		history.push(Usuario.nomeURL());
+	// 	}
+	// }
+	componentDidUpdate() {
+		// if (Usuario.token) {
+		// 	history.push(Usuario.nomeURL());
+		// }
 	}
 	render() {
 		return (
@@ -41,6 +46,7 @@ class Entrar extends Component {
 				>
 					Entrar com E-mail
 				</Autenticador>
+				<Link to='Rodrigo-Mello'>Teste</Link>
 			</div>
 		);
 	}
