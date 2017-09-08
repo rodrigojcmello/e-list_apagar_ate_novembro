@@ -3,7 +3,10 @@ const html = require('html-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 const config = {
-    entry: './src/index.jsx',
+    entry: [
+        // __dirname + '/cordova/platforms/browser/www/cordova.js',
+        './src/index.jsx'
+    ],
     output: {
         filename: 'pacote.min.js',
         path: `${ __dirname }/cordova/www`
@@ -20,7 +23,7 @@ const config = {
                 cacheDirectory: true,
                 sourceMaps: process.env.NODE_ENV == 'production' ? false : true
             },
-            include: `${ __dirname }/src`,
+            // include: [`${ __dirname }/src`, `${ __dirname }/cordova/platforms/browser/www`],
             exclude: /node_modules/
         },
         {
@@ -43,7 +46,7 @@ const config = {
                             require('precss')(),
                             require('autoprefixer')(),
                             require('postcss-calc')(),
-                            process.env.NODE_ENV == 'production' ?
+                            process.env.NODE_ENV === 'production' ?
                                 require('cssnano')() : () => {}
                         ]
                     }
@@ -53,7 +56,7 @@ const config = {
     ] },
     plugins: [
         new html({
-            template: './src/index.html',
+            template: process.env.NODE_ENV === 'production' ? './src/index_prod.html' : './src/index_dev.html',
             inject: false
         }),
         new webpack.ProvidePlugin({
@@ -64,7 +67,7 @@ const config = {
     ]
 };
 
-if (process.env.NODE_ENV == 'production') {
+if (process.env.NODE_ENV === 'production') {
     config.plugins.push(
         new webpack.DefinePlugin({
             'process.env': {
