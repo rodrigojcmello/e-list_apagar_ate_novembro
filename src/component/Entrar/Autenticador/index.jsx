@@ -1,4 +1,4 @@
-require('./estilo.sss');
+require('./estilo.sass');
 
 const Autenticador = props => (
     <button className={ `autenticador ${ props.tipo }` } onClick={ props.onClick }>

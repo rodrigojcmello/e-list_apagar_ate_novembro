@@ -1,3 +1,3 @@
-require('./page.sss');
+require('./page.sass');
 
 module.exports = {};

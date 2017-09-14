@@ -29,7 +29,7 @@ const config = {
             loader: [ 'style-loader', 'css-loader?name=cordova/www/assets/[ext]/[name].[ext]' ]
         },
         {
-            test: /\.sss$/,
+            test: /\.sass$/,
             loader: [
                 'style-loader',
                 {

@@ -13,7 +13,7 @@ if (process.env.NODE_ENV == 'production') {
     console.log = () => {};
 }
 
-import './estilo.sss';
+import './estilo.sass';
 import './_generico/index.js';
 
 const PrivateRoute = ({ component: Component, token, ...rest }) => (
