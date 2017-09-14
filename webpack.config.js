@@ -3,17 +3,12 @@ const html = require('html-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 const config = {
-    entry: [
-        // __dirname + '/cordova/platforms/browser/www/cordova.js',
-        './src/index.jsx'
-    ],
+    entry: './src/index.jsx',
     output: {
         filename: 'pacote.min.js',
         path: `${ __dirname }/cordova/www`
     },
-    resolve: {
-        extensions: ['.js', '.jsx']
-    },
+    resolve: { extensions: ['.js', '.jsx'] },
     module: { rules: [
         {
             test: /\.jsx?$/,
@@ -21,9 +16,8 @@ const config = {
             options: {
                 presets: ['stage-3', 'es2015', 'react'],
                 cacheDirectory: true,
-                sourceMaps: process.env.NODE_ENV == 'production' ? false : true
+                sourceMaps: process.env.NODE_ENV === 'production' ? false : true
             },
-            // include: [`${ __dirname }/src`, `${ __dirname }/cordova/platforms/browser/www`],
             exclude: /node_modules/
         },
         {
