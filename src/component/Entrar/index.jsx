@@ -32,17 +32,19 @@ class Entrar extends Component {
 				<Autenticador tipo='microsoft'>
 					Entrar com Microsoft
 				</Autenticador>
-				<Autenticador tipo='facebook'>
-					Entrar com Facebook
-				</Autenticador>
 				<Autenticador
-					tipo='email'
+					tipo='facebook'
 					onClick={ () => {
-						Usuario.autenticarPorEmail(
+						Usuario.autenticarComFacebook(
 							this.props.atualizarToken,
 							this.props.atualizarTransicao
 						);
 					} }
+				>
+					Entrar com Facebook
+				</Autenticador>
+				<Autenticador
+					tipo='email'
 				>
 					Entrar com E-mail
 				</Autenticador>

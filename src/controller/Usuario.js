@@ -8,7 +8,7 @@ class Usuario {
 		this.token = store.get('usuario') ? store.get('usuario').token : '';
 		this.nome = store.get('usuario') ? store.get('usuario').nome : '';
 	}
-	autenticarPorEmail(atualizarToken, atualizarTransicao) {
+	autenticarComFacebook(atualizarToken, atualizarTransicao) {
 		// store.set('usuario', {
 		// 	token: this.token = '12345',
 		// 	nome: this.nome = 'Rodrigo Mello'
@@ -16,21 +16,21 @@ class Usuario {
 		// atualizarToken(this.token);
 		// atualizarTransicao('fade-slide-left');
 		// history.push(this.nomeURL());
-		let ajax = new XMLHttpRequest();
-		ajax.open('post', config.host + '/usuario/autenticar/facebook');
-		ajax.setRequestHeader('content-type', 'application/json');
-		ajax.onreadystatechange = () => {
-			if (ajax.readyState != 4 || ajax.status != 200) return;
-			console.log('ajax.response', ajax.response);
-			let retorno = JSON.parse(ajax.response);
-			console.log('nome', retorno.nome);
-			console.log('estado', retorno.estado_civil);
-			console.log('ano', retorno.ano);
-			console.log('bool', retorno.bool);
-		};
-		ajax.send(
-			JSON.stringify(Facebook.autenticar())
-		);
+		Facebook.autenticar(dados => {
+			let ajax = new XMLHttpRequest();
+			ajax.open('post', `${ config.host }/api/usuario/autenticar/facebook`);
+			ajax.setRequestHeader('content-type', 'application/json');
+			ajax.onreadystatechange = () => {
+				if (ajax.readyState != 4 || ajax.status != 200) return;
+				console.log('ajax.response', ajax.response);
+				let retorno = JSON.parse(ajax.response);
+				console.log('nome', retorno.nome);
+				console.log('estado', retorno.estado_civil);
+				console.log('ano', retorno.ano);
+				console.log('bool', retorno.bool);
+			};
+			ajax.send(JSON.stringify(dados));			
+		});
 	}
 	nomeURL() {
 		return `/${ this.nome.replace(' ', '-') }`;
